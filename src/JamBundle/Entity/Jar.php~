@@ -1,0 +1,54 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: v.bunchuk
+ * Date: 23/09/2016
+ * Time: 14:20
+ */
+
+namespace JamBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use JamBundle\Entity\Year;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="jar")
+ */
+class Jar
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var Type
+     *
+     * @ORM\ManyToOne(targetEntity="Type", cascade={"persist"})
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\ManyToOne(targetEntity="Year", cascade={"persist"})
+     * @ORM\JoinColumn(name="year_id", referencedColumnName="id", nullable=false)
+     */
+    private $year;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(
+     *     name="comment",
+     *     type="text"
+     * )
+     */
+    private $comment;
+
+    
+}

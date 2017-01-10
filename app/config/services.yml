@@ -4,6 +4,26 @@ parameters:
 #    parameter_name: value
 
 services:
+    jam.admin:
+        class: JamBundle\Admin\JamJarAdmin
+        arguments: [~, JamBundle\Entity\Jar, ~, '@service.jar_factory']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Jar }
+    year.admin:
+            class: JamBundle\Admin\JamYearAdmin
+            arguments: [~, JamBundle\Entity\Year, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Year }
+    type.admin:
+                class: JamBundle\Admin\JamTypeAdmin
+                arguments: [~, JamBundle\Entity\Type, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: Type }
+
+    service.jar_factory:
+            class: JamBundle\Service\JarFactory
+            arguments:
+                - '@doctrine.orm.entity_manager'
 #    service_name:
 #        class: JamBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
