@@ -5,3 +5,8 @@ install: composer install
 before_script:
   - php app/console doctrine:schema:update --force
   - php app/console h:d:f:l -n
+script:
+  - phpunit -c app
+  - php vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=PSR2 src
+  - php vendor/phpmd/phpmd/src/bin/phpmd src text cleancode
+  - php vendor/sebastian/phpcpd/phpcpd src -n -q
