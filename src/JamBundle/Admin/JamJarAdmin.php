@@ -52,7 +52,8 @@ class JamJarAdmin extends AbstractAdmin
         if (!$jar || empty($jar->getId())) {
             $formMapper->add(
                 'amount',
-                'text', [
+                'text',
+                [
                     'label' => 'Amount',
                     'required' => true,
                     'data' => 1, 'constraints' => [new Range(['min' => 1, 'max' => 100])],
@@ -78,7 +79,8 @@ class JamJarAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier(
             'type',
-            'text', [
+            'text',
+            [
                 'route' => [
                     'name' => 'show'
                 ]
@@ -86,7 +88,8 @@ class JamJarAdmin extends AbstractAdmin
         );
         $listMapper->addIdentifier(
             'year',
-            'text', [
+            'text',
+            [
                 'route' => [
                     'name' => 'show'
                 ]
@@ -94,7 +97,8 @@ class JamJarAdmin extends AbstractAdmin
         );
         $listMapper->addIdentifier(
             'comment',
-            null, [
+            null,
+            [
                 'route' => [
                     'name' => 'show'
                 ]
