@@ -1,6 +1,6 @@
 language: php
 php:
-  - 7.1.x
+  - 7
 install: composer install
 before_script:
   - php app/console doctrine:schema:update --force
