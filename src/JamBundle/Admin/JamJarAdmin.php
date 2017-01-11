@@ -51,13 +51,11 @@ class JamJarAdmin extends AbstractAdmin
         $jar = $formMapper->getFormBuilder()->getData();
         if (!$jar || empty($jar->getId())) {
             $formMapper->add(
-                'amount', 'text', [
-                'label' => 'Amount',
-                'required' => true,
-                'data' => 1,
-                'constraints' => [
-                    new Range(['min' => 1, 'max' => 100]),
-                ],
+                'amount',
+                'text', [
+                    'label' => 'Amount',
+                    'required' => true,
+                    'data' => 1, 'constraints' => [new Range(['min' => 1, 'max' => 100])],
                 ]
             );
         }
@@ -79,24 +77,27 @@ class JamJarAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier(
-            'type', 'text', [
-            'route' => [
-                'name' => 'show'
-            ]
-            ]
-        );
-        $listMapper->addIdentifier(
-            'year', 'text', [
-            'route' => [
-                'name' => 'show'
-            ]
+            'type',
+            'text', [
+                'route' => [
+                    'name' => 'show'
+                ]
             ]
         );
         $listMapper->addIdentifier(
-            'comment', null, [
-            'route' => [
-                'name' => 'show'
+            'year',
+            'text', [
+                'route' => [
+                    'name' => 'show'
+                ]
             ]
+        );
+        $listMapper->addIdentifier(
+            'comment',
+            null, [
+                'route' => [
+                    'name' => 'show'
+                ]
             ]
         );
     }
@@ -106,11 +107,12 @@ class JamJarAdmin extends AbstractAdmin
         $showMapper
             ->tab('Jam') // the tab call is optional
             ->with(
-                'Jar', array(
-                'class'       => 'col-md-5',
-                'box_class'   => 'box box-solid box-info',
-                'description' => 'Lorem ipsum',
-                )
+                'Jar',
+                [
+                    'class'       => 'col-md-5',
+                    'box_class'   => 'box box-solid box-info',
+                    'description' => 'Lorem ipsum',
+                ]
             )
             ->add('id')
             ->add('type')

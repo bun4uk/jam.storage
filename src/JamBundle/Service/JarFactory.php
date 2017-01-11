@@ -38,5 +38,4 @@ class JarFactory
         }
         $this->entityManager->flush();
     }
-
 }
