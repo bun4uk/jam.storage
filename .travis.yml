@@ -1,0 +1,7 @@
+language: php
+php:
+  - 7.1.x
+install: composer install
+before_script:
+  - php app/console doctrine:schema:update --force
+  - php app/console h:d:f:l -n
